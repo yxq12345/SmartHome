@@ -1,5 +1,6 @@
 package com.example.smarthome.admin;
 
+//测试
 public class User {
     private Integer id;
 
