@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.smarthome.mapper.GoodsTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.example.smarthome.admin.GoodsType" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="good_id" property="goodId" jdbcType="INTEGER" />
+    <result column="gtname" property="gtname" jdbcType="VARCHAR" />
+    <result column="gtcount" property="gtcount" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, good_id, gtname, gtcount
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goodstype
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goodstype
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.smarthome.admin.GoodsType" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into goodstype (good_id, gtname, gtcount
+      )
+    values (#{goodId,jdbcType=INTEGER}, #{gtname,jdbcType=VARCHAR}, #{gtcount,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.smarthome.admin.GoodsType" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into goodstype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodId != null" >
+        good_id,
+      </if>
+      <if test="gtname != null" >
+        gtname,
+      </if>
+      <if test="gtcount != null" >
+        gtcount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodId != null" >
+        #{goodId,jdbcType=INTEGER},
+      </if>
+      <if test="gtname != null" >
+        #{gtname,jdbcType=VARCHAR},
+      </if>
+      <if test="gtcount != null" >
+        #{gtcount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.smarthome.admin.GoodsType" >
+    update goodstype
+    <set >
+      <if test="goodId != null" >
+        good_id = #{goodId,jdbcType=INTEGER},
+      </if>
+      <if test="gtname != null" >
+        gtname = #{gtname,jdbcType=VARCHAR},
+      </if>
+      <if test="gtcount != null" >
+        gtcount = #{gtcount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.smarthome.admin.GoodsType" >
+    update goodstype
+    set good_id = #{goodId,jdbcType=INTEGER},
+      gtname = #{gtname,jdbcType=VARCHAR},
+      gtcount = #{gtcount,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

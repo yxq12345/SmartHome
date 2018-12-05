@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.smarthome.mapper.MaintainMapper" >
+  <resultMap id="BaseResultMap" type="com.example.smarthome.admin.Maintain" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="breakdown" property="breakdown" jdbcType="VARCHAR" />
+    <result column="servertime" property="servertime" jdbcType="VARCHAR" />
+    <result column="info" property="info" jdbcType="VARCHAR" />
+    <result column="sadd_id" property="saddId" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, breakdown, servertime, info, sadd_id, createtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from maintain
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from maintain
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.smarthome.admin.Maintain" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into maintain (order_id, breakdown, servertime, 
+      info, sadd_id, createtime
+      )
+    values (#{orderId,jdbcType=INTEGER}, #{breakdown,jdbcType=VARCHAR}, #{servertime,jdbcType=VARCHAR}, 
+      #{info,jdbcType=VARCHAR}, #{saddId,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.smarthome.admin.Maintain" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into maintain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="breakdown != null" >
+        breakdown,
+      </if>
+      <if test="servertime != null" >
+        servertime,
+      </if>
+      <if test="info != null" >
+        info,
+      </if>
+      <if test="saddId != null" >
+        sadd_id,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="breakdown != null" >
+        #{breakdown,jdbcType=VARCHAR},
+      </if>
+      <if test="servertime != null" >
+        #{servertime,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null" >
+        #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="saddId != null" >
+        #{saddId,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.smarthome.admin.Maintain" >
+    update maintain
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="breakdown != null" >
+        breakdown = #{breakdown,jdbcType=VARCHAR},
+      </if>
+      <if test="servertime != null" >
+        servertime = #{servertime,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null" >
+        info = #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="saddId != null" >
+        sadd_id = #{saddId,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.smarthome.admin.Maintain" >
+    update maintain
+    set order_id = #{orderId,jdbcType=INTEGER},
+      breakdown = #{breakdown,jdbcType=VARCHAR},
+      servertime = #{servertime,jdbcType=VARCHAR},
+      info = #{info,jdbcType=VARCHAR},
+      sadd_id = #{saddId,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
