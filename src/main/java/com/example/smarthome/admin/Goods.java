@@ -5,9 +5,9 @@ import java.util.Date;
 public class Goods {
     private Integer id;
 
-    private String goodname;
+    private String goodsname;
 
-    private Integer eqId;
+    private Integer equId;
 
     private Date createtime;
 
@@ -21,20 +21,20 @@ public class Goods {
         this.id = id;
     }
 
-    public String getGoodname() {
-        return goodname;
+    public String getGoodsname() {
+        return goodsname;
     }
 
-    public void setGoodname(String goodname) {
-        this.goodname = goodname == null ? null : goodname.trim();
+    public void setGoodsname(String goodsname) {
+        this.goodsname = goodsname == null ? null : goodsname.trim();
     }
 
-    public Integer getEqId() {
-        return eqId;
+    public Integer getEquId() {
+        return equId;
     }
 
-    public void setEqId(Integer eqId) {
-        this.eqId = eqId;
+    public void setEquId(Integer equId) {
+        this.equId = equId;
     }
 
     public Date getCreatetime() {

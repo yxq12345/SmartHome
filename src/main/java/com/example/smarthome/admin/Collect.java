@@ -9,7 +9,7 @@ public class Collect {
 
     private Integer gtId;
 
-    private Date caretetime;
+    private Date createtime;
 
     public Integer getId() {
         return id;
@@ -35,11 +35,11 @@ public class Collect {
         this.gtId = gtId;
     }
 
-    public Date getCaretetime() {
-        return caretetime;
+    public Date getCreatetime() {
+        return createtime;
     }
 
-    public void setCaretetime(Date caretetime) {
-        this.caretetime = caretetime;
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 }

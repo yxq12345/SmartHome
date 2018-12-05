@@ -1,9 +1,13 @@
 package com.example.smarthome.admin;
 
-public class Photo {
+public class GoodsDetail {
     private Integer id;
 
     private Integer goodsId;
+
+    private String title;
+
+    private String info;
 
     private String imgurl;
 
@@ -21,6 +25,22 @@ public class Photo {
 
     public void setGoodsId(Integer goodsId) {
         this.goodsId = goodsId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info == null ? null : info.trim();
     }
 
     public String getImgurl() {

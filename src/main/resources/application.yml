@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url:  jdbc:mysql://10.8.162.52:3306/shier
+    url:  jdbc:mysql://10.8.162.37:3306/shier
     driver-class-name:  com.mysql.jdbc.Driver
     username:  root
-    password:  yxq1227
+    password:  123
     type: com.alibaba.druid.pool.DruidDataSource
 mybatis:
   mapper-locations: classpath:mapper/*.xml

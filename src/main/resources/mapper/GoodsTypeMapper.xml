@@ -3,12 +3,12 @@
 <mapper namespace="com.example.smarthome.mapper.GoodsTypeMapper" >
   <resultMap id="BaseResultMap" type="com.example.smarthome.admin.GoodsType" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="good_id" property="goodId" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
     <result column="gtname" property="gtname" jdbcType="VARCHAR" />
     <result column="gtcount" property="gtcount" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, good_id, gtname, gtcount
+    id, goods_id, gtname, gtcount
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -24,9 +24,9 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into goodstype (good_id, gtname, gtcount
+    insert into goodstype (goods_id, gtname, gtcount
       )
-    values (#{goodId,jdbcType=INTEGER}, #{gtname,jdbcType=VARCHAR}, #{gtcount,jdbcType=INTEGER}
+    values (#{goodsId,jdbcType=INTEGER}, #{gtname,jdbcType=VARCHAR}, #{gtcount,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.smarthome.admin.GoodsType" >
@@ -35,8 +35,8 @@
     </selectKey>
     insert into goodstype
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="goodId != null" >
-        good_id,
+      <if test="goodsId != null" >
+        goods_id,
       </if>
       <if test="gtname != null" >
         gtname,
@@ -46,8 +46,8 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="goodId != null" >
-        #{goodId,jdbcType=INTEGER},
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
       </if>
       <if test="gtname != null" >
         #{gtname,jdbcType=VARCHAR},
@@ -60,8 +60,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.example.smarthome.admin.GoodsType" >
     update goodstype
     <set >
-      <if test="goodId != null" >
-        good_id = #{goodId,jdbcType=INTEGER},
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
       </if>
       <if test="gtname != null" >
         gtname = #{gtname,jdbcType=VARCHAR},
@@ -74,7 +74,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.smarthome.admin.GoodsType" >
     update goodstype
-    set good_id = #{goodId,jdbcType=INTEGER},
+    set goods_id = #{goodsId,jdbcType=INTEGER},
       gtname = #{gtname,jdbcType=VARCHAR},
       gtcount = #{gtcount,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}

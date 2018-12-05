@@ -3,9 +3,9 @@ package com.example.smarthome.admin;
 public class Equipment {
     private Integer id;
 
-    private String ename;
+    private String equname;
 
-    private Integer cId;
+    private Integer clsId;
 
     public Integer getId() {
         return id;
@@ -15,19 +15,19 @@ public class Equipment {
         this.id = id;
     }
 
-    public String getEname() {
-        return ename;
+    public String getEquname() {
+        return equname;
     }
 
-    public void setEname(String ename) {
-        this.ename = ename == null ? null : ename.trim();
+    public void setEquname(String equname) {
+        this.equname = equname == null ? null : equname.trim();
     }
 
-    public Integer getcId() {
-        return cId;
+    public Integer getClsId() {
+        return clsId;
     }
 
-    public void setcId(Integer cId) {
-        this.cId = cId;
+    public void setClsId(Integer clsId) {
+        this.clsId = clsId;
     }
 }

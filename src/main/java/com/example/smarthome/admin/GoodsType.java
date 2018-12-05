@@ -3,7 +3,7 @@ package com.example.smarthome.admin;
 public class GoodsType {
     private Integer id;
 
-    private Integer goodId;
+    private Integer goodsId;
 
     private String gtname;
 
@@ -17,12 +17,12 @@ public class GoodsType {
         this.id = id;
     }
 
-    public Integer getGoodId() {
-        return goodId;
+    public Integer getGoodsId() {
+        return goodsId;
     }
 
-    public void setGoodId(Integer goodId) {
-        this.goodId = goodId;
+    public void setGoodsId(Integer goodsId) {
+        this.goodsId = goodsId;
     }
 
     public String getGtname() {

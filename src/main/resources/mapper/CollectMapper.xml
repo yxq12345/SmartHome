@@ -5,10 +5,10 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="gt_id" property="gtId" jdbcType="INTEGER" />
-    <result column="caretetime" property="caretetime" jdbcType="TIMESTAMP" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, gt_id, caretetime
+    id, user_id, gt_id, createtime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -24,9 +24,9 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into collect (user_id, gt_id, caretetime
+    insert into collect (user_id, gt_id, createtime
       )
-    values (#{userId,jdbcType=INTEGER}, #{gtId,jdbcType=INTEGER}, #{caretetime,jdbcType=TIMESTAMP}
+    values (#{userId,jdbcType=INTEGER}, #{gtId,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.smarthome.admin.Collect" >
@@ -41,8 +41,8 @@
       <if test="gtId != null" >
         gt_id,
       </if>
-      <if test="caretetime != null" >
-        caretetime,
+      <if test="createtime != null" >
+        createtime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -52,8 +52,8 @@
       <if test="gtId != null" >
         #{gtId,jdbcType=INTEGER},
       </if>
-      <if test="caretetime != null" >
-        #{caretetime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -66,8 +66,8 @@
       <if test="gtId != null" >
         gt_id = #{gtId,jdbcType=INTEGER},
       </if>
-      <if test="caretetime != null" >
-        caretetime = #{caretetime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -76,7 +76,7 @@
     update collect
     set user_id = #{userId,jdbcType=INTEGER},
       gt_id = #{gtId,jdbcType=INTEGER},
-      caretetime = #{caretetime,jdbcType=TIMESTAMP}
+      createtime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

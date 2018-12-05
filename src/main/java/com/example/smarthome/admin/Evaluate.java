@@ -5,7 +5,7 @@ import java.util.Date;
 public class Evaluate {
     private Integer id;
 
-    private Integer oriderId;
+    private Integer orderId;
 
     private Integer star;
 
@@ -21,12 +21,12 @@ public class Evaluate {
         this.id = id;
     }
 
-    public Integer getOriderId() {
-        return oriderId;
+    public Integer getOrderId() {
+        return orderId;
     }
 
-    public void setOriderId(Integer oriderId) {
-        this.oriderId = oriderId;
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     public Integer getStar() {

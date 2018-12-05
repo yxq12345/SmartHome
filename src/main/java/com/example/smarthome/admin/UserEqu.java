@@ -7,7 +7,7 @@ public class UserEqu {
 
     private Integer userId;
 
-    private Integer eqId;
+    private Integer equId;
 
     private Date createtime;
 
@@ -27,12 +27,12 @@ public class UserEqu {
         this.userId = userId;
     }
 
-    public Integer getEqId() {
-        return eqId;
+    public Integer getEquId() {
+        return equId;
     }
 
-    public void setEqId(Integer eqId) {
-        this.eqId = eqId;
+    public void setEquId(Integer equId) {
+        this.equId = equId;
     }
 
     public Date getCreatetime() {

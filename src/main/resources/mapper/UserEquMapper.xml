@@ -4,11 +4,11 @@
   <resultMap id="BaseResultMap" type="com.example.smarthome.admin.UserEqu" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="eq_id" property="eqId" jdbcType="INTEGER" />
+    <result column="equ_id" property="equId" jdbcType="INTEGER" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, eq_id, createtime
+    id, user_id, equ_id, createtime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -24,9 +24,9 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into user_equ (user_id, eq_id, createtime
+    insert into user_equ (user_id, equ_id, createtime
       )
-    values (#{userId,jdbcType=INTEGER}, #{eqId,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}
+    values (#{userId,jdbcType=INTEGER}, #{equId,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.smarthome.admin.UserEqu" >
@@ -38,8 +38,8 @@
       <if test="userId != null" >
         user_id,
       </if>
-      <if test="eqId != null" >
-        eq_id,
+      <if test="equId != null" >
+        equ_id,
       </if>
       <if test="createtime != null" >
         createtime,
@@ -49,8 +49,8 @@
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="eqId != null" >
-        #{eqId,jdbcType=INTEGER},
+      <if test="equId != null" >
+        #{equId,jdbcType=INTEGER},
       </if>
       <if test="createtime != null" >
         #{createtime,jdbcType=TIMESTAMP},
@@ -63,8 +63,8 @@
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="eqId != null" >
-        eq_id = #{eqId,jdbcType=INTEGER},
+      <if test="equId != null" >
+        equ_id = #{equId,jdbcType=INTEGER},
       </if>
       <if test="createtime != null" >
         createtime = #{createtime,jdbcType=TIMESTAMP},
@@ -75,7 +75,7 @@
   <update id="updateByPrimaryKey" parameterType="com.example.smarthome.admin.UserEqu" >
     update user_equ
     set user_id = #{userId,jdbcType=INTEGER},
-      eq_id = #{eqId,jdbcType=INTEGER},
+      equ_id = #{equId,jdbcType=INTEGER},
       createtime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
