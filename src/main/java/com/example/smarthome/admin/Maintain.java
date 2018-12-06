@@ -2,7 +2,7 @@ package com.example.smarthome.admin;
 
 import java.util.Date;
 
-public class MainTain {
+public class Maintain {
     private Integer id;
 
     private Integer orderId;

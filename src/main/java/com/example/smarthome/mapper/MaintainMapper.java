@@ -1,17 +1,17 @@
 package com.example.smarthome.mapper;
 
-import com.example.smarthome.admin.MainTain;
+import com.example.smarthome.admin.Maintain;
 
-public interface MainTainMapper {
+public interface MaintainMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(MainTain record);
+    int insert(Maintain record);
 
-    int insertSelective(MainTain record);
+    int insertSelective(Maintain record);
 
-    MainTain selectByPrimaryKey(Integer id);
+    Maintain selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(MainTain record);
+    int updateByPrimaryKeySelective(Maintain record);
 
-    int updateByPrimaryKey(MainTain record);
+    int updateByPrimaryKey(Maintain record);
 }
