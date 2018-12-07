@@ -22,4 +22,9 @@ public class UserController {
     public ResultBean checkName(String name){
         return userService.checkRepeat(name);
     }
+
+    @PostMapping("userpass.do")
+    public ResultBean updatePass(int uid,String password){
+        return userService.updatePass(uid,password);
+    }
 }

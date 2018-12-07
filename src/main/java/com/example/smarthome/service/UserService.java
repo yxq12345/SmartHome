@@ -8,4 +8,6 @@ public interface UserService {
     ResultBean save(User user);
     //校验
     ResultBean checkRepeat(String name);
+    //修改密码
+    ResultBean updatePass(int uid,String password);
 }

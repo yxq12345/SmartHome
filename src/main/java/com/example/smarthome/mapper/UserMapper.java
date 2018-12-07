@@ -1,6 +1,7 @@
 package com.example.smarthome.mapper;
 
 import com.example.smarthome.admin.User;
+import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -19,5 +20,5 @@ public interface UserMapper {
 
     User selectByName(String name);
 
-    int updatePassword(int id,String password);
+    int updatePassword(@Param("id") int id,@Param("password") String password);
 }

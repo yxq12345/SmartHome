@@ -29,4 +29,10 @@ public class UserServiceImpl implements UserService {
         }
 
     }
+
+    @Override
+    public ResultBean updatePass(int uid, String password) {
+
+        return ResultUtil.execOp(userMapper.updatePassword(uid,password),"重置密码");
+    }
 }
