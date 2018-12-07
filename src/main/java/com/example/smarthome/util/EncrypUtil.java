@@ -1,3 +1,4 @@
+/*
 package com.example.smarthome.util;
 
 import org.apache.shiro.codec.Base64;
@@ -6,10 +7,12 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 
 import java.security.Key;
 
+*/
 /**
  *@Author feri
  *@Date Created in 2018/7/9 14:31
- */
+ *//*
+
 public class EncrypUtil {
     public static String salt="laoxing";
     //encBase64
@@ -68,3 +71,4 @@ public class EncrypUtil {
         return new String(new AesCipherService().decrypt(Base64.decode(value), key.getEncoded()).getBytes());
     }
 }
+*/
