@@ -1,16 +1,16 @@
+
 package com.example.smarthome.token;
 
 import com.alibaba.fastjson.JSON;
-import com.feri.byby.common.constant.SystemCon;
-import com.feri.byby.common.token.Token;
-import com.feri.byby.common.util.EncrypUtil;
+import com.example.smarthome.constant.SystemCon;
+import com.example.smarthome.util.EncrypUtil;
+
 
 import java.util.Random;
 
-/**
- *@Author feri
- *@Date Created in 2018/11/29 14:04
- */
+
+
+
 public class TokenUtil {
 
     //创建用户令牌
@@ -33,3 +33,4 @@ public class TokenUtil {
 
 
 }
+
