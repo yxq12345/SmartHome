@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.smarthome.mapper.MaintainMapper" >
-  <resultMap id="BaseResultMap" type="com.example.smarthome.admin.MainTain" >
+  <resultMap id="BaseResultMap" type="com.example.smarthome.admin.Maintain" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="order_id" property="orderId" jdbcType="INTEGER" />
     <result column="breakdown" property="breakdown" jdbcType="VARCHAR" />
@@ -23,7 +23,7 @@
     delete from maintain
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.example.smarthome.admin.MainTain" >
+  <insert id="insert" parameterType="com.example.smarthome.admin.Maintain" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -34,7 +34,7 @@
       #{info,jdbcType=VARCHAR}, #{saddId,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.example.smarthome.admin.MainTain" >
+  <insert id="insertSelective" parameterType="com.example.smarthome.admin.Maintain" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.smarthome.admin.MainTain" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.smarthome.admin.Maintain" >
     update maintain
     <set >
       <if test="orderId != null" >
@@ -104,7 +104,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.smarthome.admin.MainTain" >
+  <update id="updateByPrimaryKey" parameterType="com.example.smarthome.admin.Maintain" >
     update maintain
     set order_id = #{orderId,jdbcType=INTEGER},
       breakdown = #{breakdown,jdbcType=VARCHAR},
