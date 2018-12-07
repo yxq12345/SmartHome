@@ -1,4 +1,3 @@
-
 package com.example.smarthome.token;
 
 import com.alibaba.fastjson.JSON;
@@ -33,4 +32,3 @@ public class TokenUtil {
 
 
 }
-
