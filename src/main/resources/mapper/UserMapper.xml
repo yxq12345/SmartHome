@@ -114,4 +114,20 @@
       createtime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <insert id="insertUser">
+    insert into user (phone,password,createtime) values (#{phone},#{password},now())
+  </insert>
+
+  <select id="selectByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from user where phone=#{naem}
+  </select>
+
+  <update id="updatePassword">
+    update user set password = #{password}
+    where id=#{id}
+  </update>
+
 </mapper>
