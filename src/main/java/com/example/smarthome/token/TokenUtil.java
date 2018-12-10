@@ -7,10 +7,9 @@ import com.example.smarthome.util.EncrypUtil;
 
 import java.util.Random;
 
-/**
- *@Author feri
- *@Date Created in 2018/11/29 14:04
- */
+
+
+
 public class TokenUtil {
 
     //创建用户令牌
