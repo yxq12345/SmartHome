@@ -33,7 +33,7 @@ public class ResultUtil {
     //操作成功
     public static PageBean setPageOK(int page, int limit, int count, List<Object> data){
         PageBean pageBean=new PageBean();
-        pageBean.setCode(100000);
+        pageBean.setCode(1);
         pageBean.setData(data);
         pageBean.setMsg("OK");
         pageBean.setCurrpage(page);

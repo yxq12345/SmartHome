@@ -13,6 +13,46 @@ public class Evaluate {
 
     private String info;
 
+    private User user;
+
+    private Orders orders;
+
+    private Goods goods;
+
+    private GoodsType goodsType;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Orders getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Orders orders) {
+        this.orders = orders;
+    }
+
+    public Goods getGoods() {
+        return goods;
+    }
+
+    public void setGoods(Goods goods) {
+        this.goods = goods;
+    }
+
+    public GoodsType getGoodsType() {
+        return goodsType;
+    }
+
+    public void setGoodsType(GoodsType goodsType) {
+        this.goodsType = goodsType;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -51,5 +91,20 @@ public class Evaluate {
 
     public void setInfo(String info) {
         this.info = info == null ? null : info.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Evaluate{" +
+                "id=" + id +
+                ", orderId=" + orderId +
+                ", star=" + star +
+                ", createtime=" + createtime +
+                ", info='" + info + '\'' +
+                ", user=" + user +
+                ", orders=" + orders +
+                ", goods=" + goods +
+                ", goodsType=" + goodsType +
+                '}';
     }
 }
