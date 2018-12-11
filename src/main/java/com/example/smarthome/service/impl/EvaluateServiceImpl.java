@@ -1,6 +1,7 @@
 package com.example.smarthome.service.impl;
 
 import com.example.smarthome.admin.Evaluate;
+import com.example.smarthome.constant.SystemCon;
 import com.example.smarthome.mapper.EvaluateMapper;
 import com.example.smarthome.service.EvaluateService;
 import com.example.smarthome.util.ResultUtil;
@@ -22,5 +23,13 @@ public class EvaluateServiceImpl implements EvaluateService {
 
         ResultBean rb= ResultUtil.setOK("查询所有评价",list);
         return rb;
+    }
+
+    //添加商品对应的订单信息
+    @Override
+    public ResultBean addEvaluation(Evaluate evaluate) {
+
+        int i = evaluateMapper.insertEvaluate(evaluate);
+        return i == 0 ? ResultUtil.setError(SystemCon.RERROR1,"评价失败",null) : ResultUtil.setOK("评价成功",evaluate);
     }
 }
