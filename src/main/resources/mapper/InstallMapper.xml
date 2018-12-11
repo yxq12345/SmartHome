@@ -7,6 +7,9 @@
     <result column="sadd_id" property="saddId" jdbcType="INTEGER" />
     <result column="servertime" property="servertime" jdbcType="VARCHAR" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="goodsname" property="goodsname" jdbcType="VARCHAR" />
+    <result column="gtname" property="gtname" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, order_id, sadd_id, servertime, createtime
@@ -28,7 +31,7 @@
     insert into install (order_id, sadd_id, servertime, 
       createtime)
     values (#{orderId,jdbcType=INTEGER}, #{saddId,jdbcType=INTEGER}, #{servertime,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=TIMESTAMP})
+      now())
   </insert>
   <insert id="insertSelective" parameterType="com.example.smarthome.admin.Install" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -90,4 +93,21 @@
       createtime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--查询产品-->
+  <select id="selectAllGoods" resultType="map">
+   SELECT gd.id as id, gd.goodsname as goodsname, g.gtname as gtname
+   from  orders as o
+   LEFT JOIN goodstype as g
+   on o.gt_id = g.id
+   LEFT JOIN goods as gd
+   on g.goods_id = gd.id
+   WHERE o.state != 0 AND o.state != 4 and o.user_id = #{uid}
+  </select>
+  
+  <!--查询物流情况-->
+  <select id="selectLogistics" resultType="map">
+ SELECT o.state as state from orders as o WHERE o.id = #{id}
+  </select>
+
 </mapper>
