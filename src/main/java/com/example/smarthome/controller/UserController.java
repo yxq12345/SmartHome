@@ -14,16 +14,19 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("useradd.do")
+    //注册
     public ResultBean save(User user){
         return userService.save(user);
     }
 
     @GetMapping("usercheck.do")
+    //验证用户名是否存在
     public ResultBean checkName(String name){
         return userService.checkRepeat(name);
     }
 
     @PostMapping("userpass.do")
+    //修改密码
     public ResultBean updatePass(int uid,String password){
         return userService.updatePass(uid,password);
     }

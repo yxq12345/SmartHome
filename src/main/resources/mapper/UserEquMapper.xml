@@ -79,4 +79,8 @@
       createtime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <insert id="insertEqu" parameterType="com.example.smarthome.admin.UserEqu">
+    insert into user_equ values (null,#{userId},#{equId},now())
+  </insert>
 </mapper>

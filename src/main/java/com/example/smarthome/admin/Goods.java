@@ -13,6 +13,36 @@ public class Goods {
 
     private Integer price;
 
+    private Equipment equ;
+
+    private GoodsDetail goodsDetail;
+
+    private GoodsType goodsType;
+
+    public Equipment getEqu() {
+        return equ;
+    }
+
+    public void setEqu(Equipment equ) {
+        this.equ = equ;
+    }
+
+    public GoodsDetail getGoodsDetail() {
+        return goodsDetail;
+    }
+
+    public void setGoodsDetail(GoodsDetail goodsDetail) {
+        this.goodsDetail = goodsDetail;
+    }
+
+    public GoodsType getGoodsType() {
+        return goodsType;
+    }
+
+    public void setGoodsType(GoodsType goodsType) {
+        this.goodsType = goodsType;
+    }
+
     public Integer getId() {
         return id;
     }
