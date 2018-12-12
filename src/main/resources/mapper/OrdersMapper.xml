@@ -34,6 +34,8 @@
       #{state,jdbcType=INTEGER}, #{total,jdbcType=INTEGER}, #{saddId,jdbcType=INTEGER}
       )
   </insert>
+
+  <!--购物车商品付款之后生成订单信息-->
   <insert id="insertSelective" parameterType="com.example.smarthome.admin.Orders" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
@@ -114,4 +116,48 @@
       sadd_id = #{saddId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--查询所有的订单信息-->
+  <select id="selectAllOrders" resultType="java.util.Map">
+        SELECT state,gtname,goodsname,price,'count',imgurl
+        FROM orders
+        LEFT JOIN goodstype ON goodstype.id = orders.gt_id
+        LEFT JOIN goods ON goods.id = goodstype.goods_id
+        LEFT JOIN cart ON cart.gt_id = goodstype.id
+        LEFT JOIN photo ON photo.goods_id = goods.id
+  </select>
+
+  <!--根据商品名称查询对应的订单信息-->
+  <select id="selectOrders" resultType="java.util.Map">
+        SELECT state,gtname,goodsname,price,'count',imgurl
+        FROM orders
+        LEFT JOIN goodstype ON goodstype.id = orders.gt_id
+        LEFT JOIN goods ON goods.id = goodstype.goods_id
+        LEFT JOIN cart ON cart.gt_id = goodstype.id
+        LEFT JOIN photo ON photo.goods_id = goods.id
+        where goodsname = #{goodsname}
+  </select>
+
+  <!--查询不同状态对应的订单信息-->
+  <select id="selectOrdersByState" resultType="java.util.Map">
+        SELECT state,gtname,goodsname,price,'count',imgurl
+        FROM orders
+        LEFT JOIN goodstype ON goodstype.id = orders.gt_id
+        LEFT JOIN goods ON goods.id = goodstype.goods_id
+        LEFT JOIN cart ON cart.gt_id = goodstype.id
+        LEFT JOIN photo ON photo.goods_id = goods.id
+        where state = #{state}
+  </select>
+
+  <!--展示订单详情-->
+  <select id="showDetail" resultType="java.util.Map">
+    SELECT orders.count AS count,gtname,goodsname,price,imgurl,username,phone,shoppaddress.createtime AS createtime,state,total,sadd_id
+    FROM orders
+    LEFT JOIN shoppaddress ON shoppaddress.id = orders.sadd_id
+    LEFT JOIN `user` ON `user`.id = shoppaddress.user_id
+    LEFT JOIN cart ON cart.user_id = `user`.id
+    LEFT JOIN goodstype ON goodstype.id = cart.gt_id
+    LEFT JOIN goods ON goods.id = goodstype.goods_id
+    LEFT JOIN photo ON photo.goods_id = goods.id
+  </select>
 </mapper>

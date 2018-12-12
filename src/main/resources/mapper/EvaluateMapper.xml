@@ -147,4 +147,12 @@
     gt.goods_id=g.id
     WHERE g.id=#{gid}
   </select>
+
+  <!--添加订单对应的评价信息-->
+  <insert id="insertEvaluate" parameterType="com.example.smarthome.admin.Evaluate">
+    insert into evaluate (order_id, star, createtime,
+      info)
+    values (#{orderId,jdbcType=INTEGER}, #{star,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP},
+      #{info,jdbcType=LONGVARCHAR})
+  </insert>
 </mapper>
