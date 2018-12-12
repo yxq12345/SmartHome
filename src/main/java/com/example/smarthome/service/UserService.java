@@ -10,4 +10,13 @@ public interface UserService {
     ResultBean checkRepeat(String name);
     //修改密码
     ResultBean updatePass(int uid,String password);
+    //修改头像
+    ResultBean updateHead(String path,int uid);
+    //查询所有信息
+    ResultBean findAll(Integer id);
+    //修改积分
+    ResultBean updateInte(Integer inte,Integer id);
+    //修改信息
+    ResultBean update(User user);
+
 }

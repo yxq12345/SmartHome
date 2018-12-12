@@ -21,8 +21,7 @@ public class LoginController {
       String token =  SystemCon.TOKENHASH;
       if (StringUtil.checkNoEmpty(token)){
           ResultBean rb=service.login(name,password);
-          //System.out.println(rb.toString());
-          //System.out.println(rb.getCode());
+
           if (rb.getCode()== SystemCon.ROK){
               rb.setMsg("登录成功"+"token="+rb.getMsg());
 
@@ -47,6 +46,12 @@ public class LoginController {
             return resultBean;
         }
         return resultBean;
+    }
+
+    @PostMapping("loginout.do")
+    //退出登录
+    public ResultBean loginOut(String token){
+        return service.loginout(token);
     }
 
 }

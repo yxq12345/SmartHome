@@ -68,7 +68,7 @@ public class LoginServiceImpl implements LoginService {
     public ResultBean loginout(String token) {
         JedisPool jedisPool = new JedisPool("120.78.213.189",6379);
         JedisUtil jedisUtil = new JedisUtil(jedisPool,"a");
-        jedisUtil.delHash(SystemCon.TOKENHASH,"token:"+token);
+        jedisUtil.delHash(SystemCon.TOKENHASH,"token"+token);
         return ResultUtil.setOK("注销成功",null);
     }
 

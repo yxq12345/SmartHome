@@ -35,4 +35,28 @@ public class UserServiceImpl implements UserService {
 
         return ResultUtil.execOp(userMapper.updatePassword(uid,password),"重置密码");
     }
+
+    @Override
+    public ResultBean updateHead(String path, int uid) {
+
+        return ResultUtil.execOp(userMapper.uploadhead(path,uid),"修改头像");
+    }
+
+    @Override
+    public ResultBean findAll(Integer id) {
+        User user=userMapper.selcectById(id);
+        return ResultUtil.setOK("查询用户信息",user);
+    }
+
+    @Override
+    public ResultBean updateInte(Integer inte, Integer id) {
+        ResultBean rb=ResultUtil.execOp(userMapper.updateintegral(inte,id),"修改积分");
+        return rb;
+    }
+
+    @Override
+    public ResultBean update(User user) {
+        ResultBean rb=ResultUtil.execOp(userMapper.updateByPrimaryKeySelective(user),"修改");
+        return rb;
+    }
 }
