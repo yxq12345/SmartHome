@@ -6,5 +6,6 @@ import com.example.smarthome.vo.ResultBean;
 public interface ClassesService {
 
     String classesAndEqui();
+
     ResultBean findAll();
 }
