@@ -35,6 +35,7 @@ public class ClassesServiceImpl implements ClassesService {
         }
     }
 
+    @Override
     public ResultBean findAll() {
         List<Classes> list = classesMapper.selectAll();
         ResultBean rb= ResultUtil.setOK("展示所有",list);
