@@ -7,6 +7,8 @@
     <result column="city_id" property="cityId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="provice" property="provice" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, pro_id, city_id, user_id, createtime
@@ -90,4 +92,14 @@
       createtime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--查询地址-->
+  <select id="selectAddress" resultType="map">
+  SELECT sa.id as id,p.province as provice, c.city as city from shoppaddress as sa
+LEFT JOIN province as p
+on sa.pro_id = p.id
+LEFT JOIN city as c
+on sa.city_id=c.id
+WHERE sa.user_id=#{uid}
+  </select>
 </mapper>

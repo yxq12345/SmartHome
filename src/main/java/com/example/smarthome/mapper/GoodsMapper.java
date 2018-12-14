@@ -6,6 +6,9 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface GoodsMapper {
     int deleteByPrimaryKey(Integer id);
@@ -25,4 +28,12 @@ public interface GoodsMapper {
     List<Map<String,String>> findByEid(Integer eid);
 
     Goods findById(Integer id);
+
+    List<Goods> selectGoods(String eid);
+
+    List<Goods> desc(String eid);
+
+    List<Goods> asc(String id);
+
+    List<Goods> selectPrice(@Param("eid") String eid,@Param("price1") String price1, @Param("price2") String price2);
 }

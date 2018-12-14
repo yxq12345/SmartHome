@@ -116,4 +116,24 @@ LEFT JOIN user u
 on o.user_id=u.id
 where g.id=#{gid}
   </select>
+
+  <select id="selectAll" resultMap="ResultMapWithBLOBs">
+    SELECT e.star,u.id,u.username,
+    <include refid="Blob_Column_List"></include>,
+    e.createtime
+    FROM evaluate AS e JOIN orders AS o ON
+    e.order_id=o.id JOIN `user` AS u ON
+    o.user_id=u.id JOIN goodstype AS gt ON
+    o.gt_id=gt.id JOIN goods AS g ON
+    gt.goods_id=g.id
+    WHERE g.id=#{gid}
+  </select>
+
+  <!--添加订单对应的评价信息-->
+  <insert id="insertEvaluate" parameterType="com.example.smarthome.admin.Evaluate">
+    insert into evaluate (order_id, star, createtime,
+      info)
+    values (#{orderId,jdbcType=INTEGER}, #{star,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP},
+      #{info,jdbcType=LONGVARCHAR})
+  </insert>
 </mapper>

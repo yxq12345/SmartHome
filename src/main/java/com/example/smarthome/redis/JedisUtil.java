@@ -92,6 +92,7 @@ public class JedisUtil {
     }
     public String getHash(String key,String field){
         if(jedis.exists(key)) {
+
             return jedis.hget(key, field);
         }else{
             return null;

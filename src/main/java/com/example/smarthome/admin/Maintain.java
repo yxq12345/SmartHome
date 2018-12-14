@@ -17,6 +17,36 @@ public class Maintain {
 
     private Date createtime;
 
+    private String goodsname;
+
+    private String gtname;
+
+    private Integer state;
+
+    public String getGoodsname() {
+        return goodsname;
+    }
+
+    public void setGoodsname(String goodsname) {
+        this.goodsname = goodsname;
+    }
+
+    public String getGtname() {
+        return gtname;
+    }
+
+    public void setGtname(String gtname) {
+        this.gtname = gtname;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
     public Integer getId() {
         return id;
     }

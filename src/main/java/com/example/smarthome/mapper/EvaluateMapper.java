@@ -20,4 +20,9 @@ public interface EvaluateMapper {
     int updateByPrimaryKey(Evaluate record);
 
     List<Evaluate> evaluateList(Integer gid);
+
+    List<Evaluate> selectAll(String gid);
+
+    //添加商品对应的订单信息
+    int insertEvaluate(Evaluate evaluate);
 }

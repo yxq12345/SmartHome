@@ -61,9 +61,16 @@
         <result column="equname" property="equname"></result>
         <result column="clsId" property="clsId"></result>
       </collection>
-    
+
   </resultMap>
   <select id="classesAndEqui" resultMap="ClassesAndEqui">
     select c.*,e.id as eid,e.equname as equname,e.cls_id as clsId from classes as c,equipment as e where c.id=e.cls_id
   </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from classes
+  </select>
+
 </mapper>

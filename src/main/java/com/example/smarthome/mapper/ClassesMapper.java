@@ -18,4 +18,6 @@ public interface ClassesMapper {
     int updateByPrimaryKey(Classes record);
 
     List<Classes> classesAndEqui();
+
+    List<Classes> selectAll();
 }

@@ -5,6 +5,15 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="equname" property="equname" jdbcType="VARCHAR" />
     <result column="cls_id" property="clsId" jdbcType="INTEGER" />
+    <association property="user" javaType="com.example.smarthome.admin.User">
+      <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="username" property="username" jdbcType="VARCHAR" />
+      <result column="password" property="password" jdbcType="VARCHAR" />
+      <result column="heading" property="heading" jdbcType="VARCHAR" />
+      <result column="phone" property="phone" jdbcType="VARCHAR" />
+      <result column="integral" property="integral" jdbcType="INTEGER" />
+      <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    </association>
   </resultMap>
   <sql id="Base_Column_List" >
     id, equname, cls_id
@@ -66,4 +75,18 @@
       cls_id = #{clsId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from equipment where cls_id=#{cid}
+  </select>
+
+  <select id="selectByUid" resultMap="BaseResultMap">
+     select equ.id,equ.equname,equ.cls_id
+    from equipment as equ join user_equ as ue on
+    ue.equ_id=equ.id join user as u on
+    ue.user_id=u.id  where u.id=#{uid}
+
+  </select>
 </mapper>

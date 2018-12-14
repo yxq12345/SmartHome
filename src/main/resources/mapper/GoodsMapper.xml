@@ -8,6 +8,24 @@
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="price" property="price" jdbcType="INTEGER" />
     <result column="equname" property="equname" jdbcType="VARCHAR"></result>
+    <association property="equ" javaType="com.example.smarthome.admin.Equipment">
+      <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="equname" property="equname" jdbcType="VARCHAR" />
+      <result column="cls_id" property="clsId" jdbcType="INTEGER" />
+    </association>
+    <association property="goodsType" javaType="com.example.smarthome.admin.GoodsType">
+      <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+      <result column="gtname" property="gtname" jdbcType="VARCHAR" />
+      <result column="gtcount" property="gtcount" jdbcType="INTEGER" />
+    </association>
+    <association property="goodsDetail" javaType="com.example.smarthome.admin.GoodsDetail">
+      <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+      <result column="title" property="title" jdbcType="VARCHAR" />
+      <result column="info" property="info" jdbcType="VARCHAR" />
+      <result column="imgurl" property="imgurl" jdbcType="VARCHAR" />
+    </association>
   </resultMap>
   <sql id="Base_Column_List" >
     id, goodsname, equ_id, createtime, price
@@ -91,38 +109,4 @@
       price = #{price,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap extends="BaseResultMap" type="com.example.smarthome.admin.Goods" id="hotGoods">
-    <collection property="photos" ofType="com.example.smarthome.admin.Photo">
-      <id column="pid" property="id"></id>
-      <result column="photo" property="imgurl"></result>
-    </collection>
-
-  </resultMap>
-  <select id="hotGoods" resultMap="hotGoods" >
-    SELECT g.id as id,g.goodsname as goodsname,g.createtime as createtime,g.price as price,e.equname as equname,p.id as pid,p.imgurl as photo from goods g
-LEFT JOIN equipment e
-on g.equ_id=e.id
-LEFT JOIN photo p
-on g.id=p.goods_id
-limit #{pageNum},#{pageSize}
-  </select>
-  <select id="findByEid" resultType="map">
-select gt.gtname,p.shu,goodsname,g.price,pp.imgurl from goodstype gt
-INNER join (SELECT gt_id,sum(count) as shu from orders GROUP BY gt_id) as p
-on gt.id=p.gt_id
-left JOIN goods g
-on gt.goods_id=g.id
-LEFT JOIN photo pp
-on g.id=pp.goods_id
-where equ_id=#{eid}
-ORDER BY shu DESC
-limit 0,10
-  </select>
-
-  <select id="findById" resultMap="hotGoods">
-   select g.*,p.id as pid,p.imgurl as photo from goods g
-   left join photo p
-   on g.id=p.goods_id
-   where p.goods_id=#{id}
-  </select>
 </mapper>

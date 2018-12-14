@@ -79,4 +79,13 @@
       count = #{count,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--展示购物车里的所有商品-->
+  <select id="selectAllGoods" resultType="java.util.Map">
+    SELECT `count`,gtname,goodsname,price,imgurl
+    FROM cart
+    LEFT JOIN goodstype ON goodstype.id = cart.gt_id
+    LEFT JOIN goods ON goods.id = goodstype.goods_id
+    LEFT JOIN photo ON photo.goods_id = goods.id
+  </select>
 </mapper>

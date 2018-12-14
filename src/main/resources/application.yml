@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url:  jdbc:mysql://localhost:3306/kuaxueke
+    url:  jdbc:mysql://localhost:3306/smarthome
     driver-class-name:  com.mysql.jdbc.Driver
     username:  root
-    password:  a
+    password:  123
     type: com.alibaba.druid.pool.DruidDataSource
 mybatis:
   mapper-locations: classpath:mapper/*.xml

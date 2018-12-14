@@ -55,4 +55,14 @@
     set featname = #{featname,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT f.featname,f.id FROM
+    feature AS f JOIN equ_feat AS ef ON
+    ef.feat_id=f.id
+    JOIN equipment AS e ON
+    ef.equ_id=e.id JOIN classes AS c ON
+    e.cls_id = c.id WHERE c.id=#{cid}
+  </select>
+  
 </mapper>

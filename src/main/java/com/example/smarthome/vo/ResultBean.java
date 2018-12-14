@@ -2,10 +2,6 @@ package com.example.smarthome.vo;
 
 import java.io.Serializable;
 
-/**
- *@Author feri
- *@Date Created in 2018/11/28 09:20
- */
 public class ResultBean implements Serializable {
     private int code;
     private String msg;
@@ -33,5 +29,14 @@ public class ResultBean implements Serializable {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "ResultBean{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

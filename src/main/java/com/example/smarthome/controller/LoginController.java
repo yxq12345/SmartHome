@@ -8,29 +8,52 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 
 @RestController
 public class LoginController {
-    @Autowired
-    private LoginService loginService;
+
+   @Autowired
+   private LoginService service;
 
     @PostMapping("userlogin.do")
-    public ResultBean login(String name, String password, HttpServletRequest request, HttpServletResponse response){
+    public ResultBean login(String name, String password){
+        //response.addHeader("Access-Control-Allow-Origin","*");
+       // System.out.println(name+password);
       String token =  SystemCon.TOKENHASH;
       if (StringUtil.checkNoEmpty(token)){
-          ResultBean rb=loginService.login(name,password);
+          ResultBean rb=service.login(name,password);
+
           if (rb.getCode()== SystemCon.ROK){
-              rb.setMsg("登录成功");
+              rb.setMsg("登录成功"+"token="+rb.getMsg());
+
               return rb;
           }else {
               return rb;
           }
       }else {
          /* ResultBean rb = loginService.*/
-         return null;
+          ResultBean rb = service.checkLogin(token);
+
+         return rb;
       }
 
     }
+
+    @PostMapping("userlogincheck.do")
+    public ResultBean check(String token){
+        //String tk = SystemCon.TOKENKEY;
+        ResultBean resultBean = service.checkLogin(token);
+        if (resultBean.getCode()!=SystemCon.ROK){
+            return resultBean;
+        }
+        return resultBean;
+    }
+
+    @PostMapping("loginout.do")
+    //退出登录
+    public ResultBean loginOut(String token){
+        return service.loginout(token);
+    }
+
 }
