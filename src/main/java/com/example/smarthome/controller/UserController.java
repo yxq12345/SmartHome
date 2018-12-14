@@ -17,12 +17,14 @@ public class UserController {
     @PostMapping("useradd.do")
     //注册
     public ResultBean save(User user){
+        System.out.println(user.toString());
         return userService.save(user);
     }
 
     @GetMapping("usercheck.do")
     //验证用户名是否存在
     public ResultBean checkName(String name){
+        System.out.println(name);
         return userService.checkRepeat(name);
     }
 
@@ -48,5 +50,11 @@ public class UserController {
     //修改用户信息
     public ResultBean updateUser(User user){
         return userService.update(user);
+    }
+
+    @GetMapping("findintebyuid.do")
+    //查询用户的积分
+    public ResultBean findInteByUid(Integer uid){
+        return userService.findInte(uid);
     }
 }

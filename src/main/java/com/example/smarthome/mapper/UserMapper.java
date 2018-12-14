@@ -27,4 +27,6 @@ public interface UserMapper {
     User selcectById(Integer id);
 
     int updateintegral(@Param("integral")Integer integral,@Param("id") Integer id);
+
+    int selectInteByUid(Integer uid);
 }

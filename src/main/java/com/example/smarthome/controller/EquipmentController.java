@@ -22,4 +22,5 @@ public class EquipmentController {
     public ResultBean findByUid(String uid){
         return equipmentService.findById(uid);
     }
+
 }

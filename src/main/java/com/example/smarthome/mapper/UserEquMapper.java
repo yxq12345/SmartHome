@@ -17,4 +17,6 @@ public interface UserEquMapper {
     int updateByPrimaryKey(UserEqu record);
 
     int insertEqu(UserEqu userEqu);
+
+    int deleteByUid(@Param("uid") Integer uid,@Param("eid") Integer eid);
 }

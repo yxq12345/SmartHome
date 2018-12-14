@@ -24,17 +24,18 @@ public class OSSController {
     public ResultBean upload(MultipartFile file,int id) throws IOException {
         OSSUtil ossUtil = new OSSUtil("oss-cn-beijing.aliyuncs.com","LTAIVx1oizHaw5Iz",
                 "X1SlkDu0eYShwW41hLw20y61xVDgbC","yxq1227");
-        if (!file.isEmpty()){
+        if (file!=null){
             String path=ossUtil.fileUp(file.getOriginalFilename(),file.getBytes());
             ResultBean rb=ResultUtil.setOK("存储成功",path);
             if (rb.getMsg().equals("存储成功")){
-                String headurl= (String) rb.getData();
+                //String headurl= (String) rb.getData();
               return userService.updateHead(path,id);
+            }else{
+                return ResultUtil.setError(SystemCon.RERROR1,"失败",null);
             }
-            return ResultUtil.setOK("存储成功",path);
-        }else {
+           //return ResultUtil.setOK("存储成功",path);
+        }else{
             return ResultUtil.setError(SystemCon.RERROR1,"请选择上传文件",null);
         }
-
     }
 }

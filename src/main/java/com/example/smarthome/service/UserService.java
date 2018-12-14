@@ -18,5 +18,7 @@ public interface UserService {
     ResultBean updateInte(Integer inte,Integer id);
     //修改信息
     ResultBean update(User user);
+    //查询积分
+    ResultBean findInte(Integer uid);
 
 }

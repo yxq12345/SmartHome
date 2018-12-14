@@ -16,4 +16,6 @@ public interface ProblemsMapper {
     int updateByPrimaryKeyWithBLOBs(Problems record);
 
     int updateByPrimaryKey(Problems record);
+
+    int insertback(Problems problems);
 }

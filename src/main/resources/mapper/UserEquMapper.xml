@@ -83,4 +83,8 @@
   <insert id="insertEqu" parameterType="com.example.smarthome.admin.UserEqu">
     insert into user_equ values (null,#{userId},#{equId},now())
   </insert>
+
+  <delete id="deleteByUid">
+    delete from user_equ where user_id=#{uid} and equ_id=#{eid}
+  </delete>
 </mapper>

@@ -6,6 +6,35 @@
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="gt_id" property="gtId" jdbcType="INTEGER" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <association property="user" javaType="com.example.smarthome.admin.User">
+      <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="username" property="username" jdbcType="VARCHAR" />
+      <result column="password" property="password" jdbcType="VARCHAR" />
+      <result column="heading" property="heading" jdbcType="VARCHAR" />
+      <result column="phone" property="phone" jdbcType="VARCHAR" />
+      <result column="integral" property="integral" jdbcType="INTEGER" />
+      <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    </association>
+    <association property="goods" javaType="com.example.smarthome.admin.Goods">
+      <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="goodsname" property="goodsname" jdbcType="VARCHAR" />
+      <result column="equ_id" property="equId" jdbcType="INTEGER" />
+      <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+      <result column="price" property="price" jdbcType="INTEGER" />
+    </association>
+    <association property="goodsType" javaType="com.example.smarthome.admin.GoodsType">
+      <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+      <result column="gtname" property="gtname" jdbcType="VARCHAR" />
+      <result column="gtcount" property="gtcount" jdbcType="INTEGER" />
+    </association>
+    <association property="goodsDetail" javaType="com.example.smarthome.admin.GoodsDetail">
+      <id column="id" property="id" jdbcType="INTEGER" />
+      <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+      <result column="title" property="title" jdbcType="VARCHAR" />
+      <result column="info" property="info" jdbcType="VARCHAR" />
+      <result column="imgurl" property="imgurl" jdbcType="VARCHAR" />
+    </association>
   </resultMap>
   <sql id="Base_Column_List" >
     id, user_id, gt_id, createtime
@@ -79,4 +108,15 @@
       createtime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectCollByUid" resultMap="BaseResultMap">
+    SELECT g.goodsname,g.price,gt.gtname,gd.title,gd.info,gd.imgurl
+    FROM collect AS c JOIN `user` AS u ON
+    c.user_id=u.id JOIN goodstype AS gt ON
+    c.gt_id=gt.id JOIN goods AS g ON
+    gt.goods_id=g.id JOIN goodsdetail AS gd ON
+    g.id=gd.goods_id
+    WHERE u.id=#{uid}
+  </select>
+
 </mapper>

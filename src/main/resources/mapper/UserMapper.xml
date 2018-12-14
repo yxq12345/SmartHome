@@ -145,5 +145,9 @@
     update user set integral=#{integral}
     where id=#{id}
   </update>
+  
+  <select id="selectInteByUid" resultType="java.lang.Integer">
+    select integral from user where id=#{uid}
+  </select>
 
 </mapper>

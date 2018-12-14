@@ -59,4 +59,11 @@ public class UserServiceImpl implements UserService {
         ResultBean rb=ResultUtil.execOp(userMapper.updateByPrimaryKeySelective(user),"修改");
         return rb;
     }
+
+    @Override
+    public ResultBean findInte(Integer uid) {
+        int i = userMapper.selectInteByUid(uid);
+        ResultBean rb=ResultUtil.setOK("查询积分",i);
+        return rb;
+    }
 }

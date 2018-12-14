@@ -5,9 +5,9 @@ import com.example.smarthome.service.LoginService;
 import com.example.smarthome.util.StringUtil;
 import com.example.smarthome.vo.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 
 @RestController
@@ -18,6 +18,8 @@ public class LoginController {
 
     @PostMapping("userlogin.do")
     public ResultBean login(String name, String password){
+        //response.addHeader("Access-Control-Allow-Origin","*");
+       // System.out.println(name+password);
       String token =  SystemCon.TOKENHASH;
       if (StringUtil.checkNoEmpty(token)){
           ResultBean rb=service.login(name,password);

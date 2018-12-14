@@ -19,4 +19,10 @@ public class UserEquServiceImpl implements UserEquService {
         ResultBean rb= ResultUtil.execOp(userEquMapper.insertEqu(userEqu),"添加");
         return rb;
     }
+
+    @Override
+    public ResultBean delEqu(Integer uid,Integer eid) {
+        ResultBean rb=ResultUtil.execOp(userEquMapper.deleteByUid(uid,eid),"删除");
+        return rb;
+    }
 }
