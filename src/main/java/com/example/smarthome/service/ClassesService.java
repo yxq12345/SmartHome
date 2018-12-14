@@ -7,3 +7,4 @@ public interface ClassesService {
 
     String classesAndEqui();
     ResultBean findAll();
+}
