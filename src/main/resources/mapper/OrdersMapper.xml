@@ -135,7 +135,7 @@
         LEFT JOIN goods ON goods.id = goodstype.goods_id
         LEFT JOIN cart ON cart.gt_id = goodstype.id
         LEFT JOIN photo ON photo.goods_id = goods.id
-        where goodsname = #{goodsname}
+        where goodsname = #{goodsname} and orders.user_id = #{userId}
   </select>
 
   <!--查询不同状态对应的订单信息-->
@@ -146,7 +146,7 @@
         LEFT JOIN goods ON goods.id = goodstype.goods_id
         LEFT JOIN cart ON cart.gt_id = goodstype.id
         LEFT JOIN photo ON photo.goods_id = goods.id
-        where state = #{state}
+        where state = #{state} and orders.user_id = #{userId}
   </select>
 
   <!--展示订单详情-->

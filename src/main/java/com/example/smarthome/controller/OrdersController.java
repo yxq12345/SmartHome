@@ -18,23 +18,24 @@ public class OrdersController {
 
     //展示所有的订单信息
     @GetMapping("/showAllOrders")
-    public ResultBean getOrdersList() {
+    public ResultBean getOrdersList(Integer userId) {
 
-        return ordersService.selectAllOrders();
+        return ordersService.selectAllOrders(userId);
     }
 
     //根据商品名称查询对应的订单信息
     @GetMapping("/selectOrders")
-    public ResultBean selectOrdersList(String goodsname) {
+    public ResultBean selectOrdersList(String goodsname,Integer userId) {
 
-        return ordersService.selectOrders(goodsname);
+        return ordersService.selectOrders(goodsname,userId);
     }
 
     //查询不同状态对应的订单信息
     @GetMapping("/selectStateOrders")
-    public ResultBean selectObligationOrders(Integer state) {
-
-        return ordersService.selectOrdersByState(state);
+    public ResultBean selectObligationOrders(Integer state,Integer userId) {
+        System.out.println(state);
+        System.out.println(userId);
+        return ordersService.selectOrdersByState(state,userId);
     }
 
     //购物车商品付款之后生成订单信息

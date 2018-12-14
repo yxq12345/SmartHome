@@ -1,6 +1,7 @@
 package com.example.smarthome.mapper;
 
 import com.example.smarthome.admin.Orders;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,13 +20,13 @@ public interface OrdersMapper {
     int updateByPrimaryKey(Orders record);
 
     //展示所有订单的信息
-    List<Orders> selectAllOrders();
+    List<Orders> selectAllOrders(Integer userId);
 
     //根据商品名称查询对应的订单信息
-    List<Orders> selectOrders(String goodsname);
+    List<Orders> selectOrders(@Param("goodsname") String goodsname, @Param("userId") Integer userId);
 
     //查询不同状态对应的订单信息
-    List<Orders> selectOrdersByState(Integer state);
+    List<Orders> selectOrdersByState(@Param("state") Integer state,@Param("userId") Integer userId);
 
     //展示订单详情信息
     List<Orders> showDetail(Integer id);

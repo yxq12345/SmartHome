@@ -22,9 +22,9 @@ public class OrdersServiceImpl implements OrdersService {
 
     //展示所有的订单信息
     @Override
-    public ResultBean selectAllOrders() {
+    public ResultBean selectAllOrders(Integer userId) {
 
-        List<Orders> ordersList = ordersMapper.selectAllOrders();
+        List<Orders> ordersList = ordersMapper.selectAllOrders(userId);
         List<Orders> data = new ArrayList<Orders>(ordersList);
 
         return  ResultUtil.setOK("查询成功",ordersList);
@@ -32,9 +32,9 @@ public class OrdersServiceImpl implements OrdersService {
 
     //根据商品名称查询对应的订单信息
     @Override
-    public ResultBean selectOrders(String goodsname) {
+    public ResultBean selectOrders(String goodsname,Integer userId) {
 
-        List<Orders> orders = ordersMapper.selectOrders(goodsname);
+        List<Orders> orders = ordersMapper.selectOrders(goodsname,userId);
         List<Orders> orders1 = new ArrayList<Orders>(orders);
 
         return ResultUtil.setOK("查询成功",orders);
@@ -42,9 +42,9 @@ public class OrdersServiceImpl implements OrdersService {
 
     //查询不同状态对应的订单信息
     @Override
-    public ResultBean selectOrdersByState(Integer state) {
+    public ResultBean selectOrdersByState(Integer state,Integer userId) {
 
-        List<Orders> orders = ordersMapper.selectOrdersByState(state);
+        List<Orders> orders = ordersMapper.selectOrdersByState(state,userId);
         List<Orders> orders1 = new ArrayList<Orders>(orders);
 
         return ResultUtil.setOK("查询成功",orders);
