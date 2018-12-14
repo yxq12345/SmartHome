@@ -8,10 +8,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-/**
- *@Author feri
- *@Date Created in 2018/7/20 11:56
- */
 public class JedisUtil {
 
     private String host;

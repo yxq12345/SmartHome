@@ -23,6 +23,14 @@ public class SystemCon {
     public static final String TOKECOOKIE="usertoken";
     public static final String TOKENPRE="token:";
 
+    //分页
+    public static final Integer PAGENUM=1;
+    public static final Integer PAGESIZE=10;
+
+    //Redus存储共有信息的key
+    public static final String CLASSESANDEQUI="classesAndEqui";
+
+
 
 
 }

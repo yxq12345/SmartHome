@@ -90,4 +90,7 @@
       imgurl = #{imgurl,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="findByGid" resultMap="BaseResultMap" >
+    select * from goodsdetail where goods_id=#{gid}
+  </select>
 </mapper>

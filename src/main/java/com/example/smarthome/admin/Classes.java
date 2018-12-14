@@ -1,9 +1,21 @@
 package com.example.smarthome.admin;
 
+import java.util.List;
+
 public class Classes {
     private Integer id;
 
     private String cname;
+
+    private List<Equipment> equipmentList;
+
+    public List<Equipment> getEquipmentList() {
+        return equipmentList;
+    }
+
+    public void setEquipmentList(List<Equipment> equipmentList) {
+        this.equipmentList = equipmentList;
+    }
 
     public Integer getId() {
         return id;

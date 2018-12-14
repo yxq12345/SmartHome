@@ -104,4 +104,16 @@
       createtime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="evaluateList" resultMap="BaseResultMap">
+select e.id,e.star,e.info,e.createtime,u.username as username,u.heading as heading from evaluate e
+LEFT JOIN orders o
+on e.order_id=o.id
+LEFT JOIN goodstype gt
+on gt.id=o.gt_id
+LEFT JOIN goods g
+on gt.goods_id=g.id
+LEFT JOIN user u
+on o.user_id=u.id
+where g.id=#{gid}
+  </select>
 </mapper>

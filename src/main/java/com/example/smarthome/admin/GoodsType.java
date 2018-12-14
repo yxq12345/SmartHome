@@ -40,4 +40,14 @@ public class GoodsType {
     public void setGtcount(Integer gtcount) {
         this.gtcount = gtcount;
     }
+
+    @Override
+    public String toString() {
+        return "GoodsType{" +
+                "id=" + id +
+                ", goodsId=" + goodsId +
+                ", gtname='" + gtname + '\'' +
+                ", gtcount=" + gtcount +
+                '}';
+    }
 }

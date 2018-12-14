@@ -13,6 +13,26 @@ public class Evaluate {
 
     private String info;
 
+    private String username;
+
+    private String heading;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getHeading() {
+        return heading;
+    }
+
+    public void setHeading(String heading) {
+        this.heading = heading;
+    }
+
     public Integer getId() {
         return id;
     }

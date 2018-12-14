@@ -79,4 +79,7 @@
       gtcount = #{gtcount,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="findgoodstypes" resultMap="BaseResultMap">
+    select * from goodstype where goods_id=#{gid}
+  </select>
 </mapper>

@@ -2,6 +2,8 @@ package com.example.smarthome.mapper;
 
 import com.example.smarthome.admin.GoodsDetail;
 
+import java.util.List;
+
 public interface GoodsDetailMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface GoodsDetailMapper {
     int updateByPrimaryKeySelective(GoodsDetail record);
 
     int updateByPrimaryKey(GoodsDetail record);
+
+    List<GoodsDetail> findByGid(Integer gid);
 }

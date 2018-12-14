@@ -1,6 +1,7 @@
 package com.example.smarthome.admin;
 
 import java.util.Date;
+import java.util.List;
 
 public class Goods {
     private Integer id;
@@ -12,6 +13,38 @@ public class Goods {
     private Date createtime;
 
     private Integer price;
+
+    private String equname;
+
+    private List<Photo> photos;
+
+    private List<GoodsType> goodsTypes;
+
+    public List<GoodsType> getGoodsTypes() {
+        return goodsTypes;
+    }
+
+    public void setGoodsTypes(List<GoodsType> goodsTypes) {
+        this.goodsTypes = goodsTypes;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public String getEquname() {
+        return equname;
+    }
+
+    public void setEquname(String equname) {
+        this.equname = equname;
+    }
+
+
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
+    }
 
     public Integer getId() {
         return id;
@@ -51,5 +84,19 @@ public class Goods {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Goods{" +
+                "id=" + id +
+                ", goodsname='" + goodsname + '\'' +
+                ", equId=" + equId +
+                ", createtime=" + createtime +
+                ", price=" + price +
+                ", equname='" + equname + '\'' +
+                ", photos=" + photos +
+                ", goodsTypes=" + goodsTypes +
+                '}';
     }
 }

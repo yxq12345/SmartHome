@@ -3,10 +3,7 @@ package com.example.smarthome.vo;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- *@Author feri
- *@Date Created in 2018/11/28 09:20
- */
+
 public class PageBean implements Serializable {
     private int code;
     private String msg;
