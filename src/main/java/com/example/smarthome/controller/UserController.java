@@ -34,7 +34,7 @@ public class UserController {
         return userService.updatePass(uid,password);
     }
 
-    @PostMapping("userall.do")
+    @GetMapping("userall.do")
     //查询用户的信息
     public ResultBean userAll(Integer id){
         return userService.findAll(id);
