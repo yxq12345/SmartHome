@@ -125,6 +125,7 @@
         LEFT JOIN goods ON goods.id = goodstype.goods_id
         LEFT JOIN cart ON cart.gt_id = goodstype.id
         LEFT JOIN photo ON photo.goods_id = goods.id
+        where orders.user_id = #{userId}
   </select>
 
   <!--根据商品名称查询对应的订单信息-->
