@@ -18,7 +18,5 @@ public interface CartMapper {
     int updateByPrimaryKey(Cart record);
 
     //展示购物车里的所有商品
-    List<Cart> selectAllGoods();
-
-    int insertCart(Cart cart);
+    List<Cart> selectAllGoods(Integer userId);
 }
