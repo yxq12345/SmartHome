@@ -88,4 +88,9 @@
     LEFT JOIN goods ON goods.id = goodstype.goods_id
     LEFT JOIN photo ON photo.goods_id = goods.id
   </select>
+
+  <insert id="insertCart">
+    insert into cart (id,user_id,gt_id,`count`) values
+    (null,#{userId},#{gtId},#{count})
+  </insert>
 </mapper>

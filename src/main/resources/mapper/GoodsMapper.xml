@@ -109,4 +109,39 @@
       price = #{price,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectGoods" resultMap="BaseResultMap">
+    SELECT g.goodsname,gd.title,gt.gtname,gd.imgurl,g.price
+    FROM equipment AS e JOIN goods AS g ON
+    e.id=g.equ_id JOIN goodstype AS gt ON
+    g.id=gt.goods_id JOIN goodsdetail AS gd ON
+    g.id=gd.goods_id WHERE e.id=#{eid}
+  </select>
+
+  <select id="desc" resultMap="BaseResultMap">
+    SELECT * FROM(
+    SELECT g.goodsname,gd.title,gt.gtname,gd.imgurl,g.price
+    FROM equipment AS e JOIN goods AS g ON
+    e.id=g.equ_id JOIN goodstype AS gt ON
+    g.id=gt.goods_id JOIN goodsdetail AS gd ON
+    g.id=gd.goods_id WHERE e.id=#{eid})AS a ORDER BY a.price desc
+  </select>
+
+  <select id="asc" resultMap="BaseResultMap">
+    SELECT * FROM(
+    SELECT g.goodsname,gd.title,gt.gtname,gd.imgurl,g.price
+    FROM equipment AS e JOIN goods AS g ON
+    e.id=g.equ_id JOIN goodstype AS gt ON
+    g.id=gt.goods_id JOIN goodsdetail AS gd ON
+    g.id=gd.goods_id WHERE e.id=#{eid})AS a ORDER BY a.price ASC
+  </select>
+
+  <select id="selectPrice" resultMap="BaseResultMap">
+    SELECT g.goodsname,gd.title,gt.gtname,gd.imgurl,g.price
+    FROM equipment AS e JOIN goods AS g ON
+    e.id=g.equ_id JOIN goodstype AS gt ON
+    g.id=gt.goods_id JOIN goodsdetail AS gd ON
+    g.id=gd.goods_id WHERE e.id=#{eid} AND g.price>#{price1} AND g.price &lt; #{price2}
+  </select>
+
 </mapper>

@@ -28,4 +28,10 @@ public class CartServiceImpl implements CartService {
 
         return ResultUtil.setOK("查询成功",cartList);
     }
+
+    @Override
+    public ResultBean addCart(Cart cart) {
+        ResultBean rb=ResultUtil.execOp(cartMapper.insertCart(cart),"添加");
+        return rb;
+    }
 }
