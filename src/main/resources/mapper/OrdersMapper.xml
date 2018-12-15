@@ -119,7 +119,7 @@
 
   <!--查询所有的订单信息-->
   <select id="selectAllOrders" resultType="java.util.Map">
-        SELECT state,gtname,goodsname,price,'count',imgurl
+        SELECT state,gtname,goodsname,price,orders.count,imgurl
         FROM orders
         LEFT JOIN goodstype ON goodstype.id = orders.gt_id
         LEFT JOIN goods ON goods.id = goodstype.goods_id
@@ -129,7 +129,7 @@
 
   <!--根据商品名称查询对应的订单信息-->
   <select id="selectOrders" resultType="java.util.Map">
-        SELECT state,gtname,goodsname,price,'count',imgurl
+        SELECT state,gtname,goodsname,price,orders.count,imgurl
         FROM orders
         LEFT JOIN goodstype ON goodstype.id = orders.gt_id
         LEFT JOIN goods ON goods.id = goodstype.goods_id
@@ -140,7 +140,7 @@
 
   <!--查询不同状态对应的订单信息-->
   <select id="selectOrdersByState" resultType="java.util.Map">
-        SELECT state,gtname,goodsname,price,'count',imgurl
+        SELECT state,gtname,goodsname,price,orders.count,imgurl
         FROM orders
         LEFT JOIN goodstype ON goodstype.id = orders.gt_id
         LEFT JOIN goods ON goods.id = goodstype.goods_id
