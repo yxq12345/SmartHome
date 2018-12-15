@@ -1,5 +1,6 @@
 package com.example.smarthome.service;
 
+import com.example.smarthome.admin.Cart;
 import com.example.smarthome.vo.ResultBean;
 
 public interface CartService {

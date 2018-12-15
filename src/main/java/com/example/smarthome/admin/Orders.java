@@ -15,6 +15,8 @@ public class Orders {
 
     private Integer saddId;
 
+    private Photo photo;
+
     public Integer getId() {
         return id;
     }

@@ -9,6 +9,11 @@
     <result column="state" property="state" jdbcType="INTEGER" />
     <result column="total" property="total" jdbcType="INTEGER" />
     <result column="sadd_id" property="saddId" jdbcType="INTEGER" />
+      <association property="photo" javaType="com.example.smarthome.admin.Photo">
+          <id column="id" property="id" jdbcType="INTEGER" />
+          <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+          <result column="imgurl" property="imgurl" jdbcType="VARCHAR" />
+      </association>
   </resultMap>
   <sql id="Base_Column_List" >
     id, user_id, gt_id, count, state, total, sadd_id

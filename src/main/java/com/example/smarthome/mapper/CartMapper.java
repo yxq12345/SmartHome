@@ -19,4 +19,6 @@ public interface CartMapper {
 
     //展示购物车里的所有商品
     List<Cart> selectAllGoods(Integer userId);
+
+    int insertCart(Cart cart);
 }

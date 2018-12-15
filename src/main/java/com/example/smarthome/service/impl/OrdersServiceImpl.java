@@ -25,7 +25,7 @@ public class OrdersServiceImpl implements OrdersService {
     public ResultBean selectAllOrders(Integer userId) {
 
         List<Orders> ordersList = ordersMapper.selectAllOrders(userId);
-        List<Orders> data = new ArrayList<Orders>(ordersList);
+
 
         return  ResultUtil.setOK("查询成功",ordersList);
     }
