@@ -87,5 +87,6 @@
     LEFT JOIN goodstype ON goodstype.id = cart.gt_id
     LEFT JOIN goods ON goods.id = goodstype.goods_id
     LEFT JOIN photo ON photo.goods_id = goods.id
+    where cart.user_id = #{userId}
   </select>
 </mapper>

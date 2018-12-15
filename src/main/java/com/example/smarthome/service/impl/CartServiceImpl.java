@@ -21,9 +21,9 @@ public class CartServiceImpl implements CartService {
 
     //展示购物车里的所有商品
     @Override
-    public ResultBean getCartList() {
+    public ResultBean getCartList(Integer userId) {
 
-        List<Cart> cartList = cartMapper.selectAllGoods();
+        List<Cart> cartList = cartMapper.selectAllGoods(userId);
         List<Cart> carts = new ArrayList<Cart>(cartList);
 
         return ResultUtil.setOK("查询成功",cartList);

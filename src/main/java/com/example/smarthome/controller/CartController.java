@@ -16,8 +16,8 @@ public class CartController {
 
     //展示购物车里的所有商品
     @GetMapping("/showCartList")
-    public ResultBean getCartList() {
+    public ResultBean getCartList(Integer userId) {
 
-        return cartService.getCartList();
+        return cartService.getCartList(userId);
     }
 }
